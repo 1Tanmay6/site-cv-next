@@ -19,22 +19,22 @@ const workSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb1photo.jpg",
+          path: "/tickerApp.png",
+          bool: false,
+        },
+        {
+          title: "title",
+          path: "/tedTicket.png",
           bool: true,
         },
         {
           title: "title",
-          path: "/thumb2photo.jpg",
-          bool: true,
+          path: "/locus.png",
+          bool: false,
         },
         {
           title: "title",
-          path: "/thumb3photo.jpg",
-          bool: true,
-        },
-        {
-          title: "title",
-          path: "/thumb4photo.jpg",
+          path: "/expense.png",
           bool: true,
         },
       ],
@@ -43,8 +43,32 @@ const workSlides = {
       images: [
         {
           title: "title",
-          path: "/thumb5photo.jpg",
-          bool: false,
+          path: "/Myshopapp.png",
+          bool: true,
+        },
+        {
+          title: "title",
+          path: "/client.png",
+          bool: true,
+        },
+        {
+          title: "title",
+          path: "/firscv.png",
+          bool: true,
+        },
+        {
+          title: "title",
+          path: "/admin.png",
+          bool: true,
+        },
+      ],
+    },
+    {
+      images: [
+        {
+          title: "title",
+          path: "/mernshop.png",
+          bool: true,
         },
         // {
         //   title: "title",
@@ -63,30 +87,6 @@ const workSlides = {
         // },
       ],
     },
-    // {
-    //   images: [
-    //     {
-    //       title: "title",
-    //       path: "/thumb4photo.jpg",
-    //       bool: true,
-    //     },
-    //     {
-    //       title: "title",
-    //       path: "/thumb1photo.jpg",
-    //       bool: true,
-    //     },
-    //     {
-    //       title: "title",
-    //       path: "/thumb2photo.jpg",
-    //       bool: false,
-    //     },
-    //     {
-    //       title: "title",
-    //       path: "/thumb5photo.jpg",
-    //       bool: false,
-    //     },
-    //   ],
-    // },
   ],
 };
 
@@ -107,7 +107,7 @@ const WorkSlider = () => {
             key={slideIndex}
             // onClick={() => router.push("/contact")}
           >
-            <div className="grid grid-cols-4 grid-rows-3 gap-4 cursor-pointer">
+            <div className="grid grid-cols-2 grid-rows-2 gap-4 bg-cover cursor-pointer">
               {slide.images.map((image, index) => {
                 return (
                   <div
@@ -116,7 +116,6 @@ const WorkSlider = () => {
                   >
                     <div className="relative flex items-center justify-center overflow-hidden group">
                       {/* Image */}
-
                       <Image
                         src={image.path}
                         alt={image.title}
