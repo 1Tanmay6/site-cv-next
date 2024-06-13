@@ -28,9 +28,10 @@ const Work = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              We offer a wide range of services to meet your needs, from web
-              development and mobile application development to UI/UX design and
-              programming in various languages.
+              Explore my diverse portfolio showcasing innovative designs,
+              impactful projects, and creative solutions across various
+              industries. Each piece reflects my passion for excellence and
+              commitment to delivering outstanding results.
             </motion.p>
           </div>
           {/* Slider */}

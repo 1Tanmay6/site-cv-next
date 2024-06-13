@@ -28,9 +28,11 @@ const Services = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              We offer a wide range of services to meet your needs, from web
-              development and mobile application development to UI/UX design and
-              programming in various languages.
+              As a skilled data scientist, full stack developer, and app
+              developer specializing in Flutter and Dart, I offer comprehensive
+              services including data analysis, end-to-end web development, and
+              cross-platform mobile app creation. Lets turn your ideas into
+              reality with tailored, high-quality solutions.
             </motion.p>
           </div>
           {/* Slider */}

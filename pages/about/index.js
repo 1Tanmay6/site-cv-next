@@ -27,12 +27,36 @@ import {
   SiPostgresql,
   SiRazorpay,
   SiStripe,
+  SiMicrosoftazure,
+  SiPandas,
+  SiOpenai,
+  SiDocker,
+  SiApachehadoop,
+  SiApachespark,
+  SiApachehive,
 } from "react-icons/si";
 //  data
 const aboutData = [
   {
-    title: "skills",
+    title: "Technologies",
     info: [
+      {
+        title: "Data Science",
+        icons: [
+          <SiMicrosoftazure key="SiMicrosoftazure " />,
+          <SiPandas key="SiPandas " />,
+          <SiOpenai key="SiOpenai " />,
+          <SiDocker key="SiDocker " />,
+        ],
+      },
+      {
+        title: "Big Data",
+        icons: [
+          <SiApachehadoop key="SiApachehadoop " />,
+          <SiApachespark key="SiApachespark " />,
+          <SiApachehive key="SiApachehive " />,
+        ],
+      },
       {
         title: "Web Development",
         icons: [
@@ -92,7 +116,7 @@ const aboutData = [
       {
         title: "NIIT University - Neemrana, Rajasthan",
         stage: "2021 - 2025",
-        marks: "CGPA - 9.23",
+        marks: "CGPA - 9.41",
       },
     ],
   },
@@ -106,7 +130,15 @@ const aboutData = [
       },
       {
         title: "Lead Web Developer - GDSC NIIT",
-        stage: "Oct 2022 - Present",
+        stage: "Oct 2022 - Sep 2023",
+      },
+      {
+        title: "Technical Core - GDSC NIIT",
+        stage: "Oct 2023 - Jun 2024",
+      },
+      {
+        title: "Data Scientist - Vanqiusher Software Services",
+        stage: "Jun 2024 - Present",
       },
     ],
   },
@@ -209,11 +241,14 @@ const About = () => {
             exit="hidden"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            As a versatile programmer with over 5 years of experience, I have a
-            strong foundation in various languages including C, C++, Python, and
-            Java. My passion for web development led me to create visually
-            appealing and functional websites. I also have experience in
-            developing mobile applications using Flutter and Dart.
+            As a versatile programmer with over 5 years of experience in
+            programming, I have a strong foundation in Python and Java. My
+            passion for web development has led me to create visually appealing
+            and functional websites. I am also a data scientist skilled in
+            leveraging generative AI to create innovative products.
+            Additionally, I specialize in developing mobile applications using
+            Flutter and Dart, delivering seamless user experiences across
+            platforms
           </motion.p>
           {/* counters */}
           <motion.div
@@ -225,23 +260,23 @@ const About = () => {
           >
             <div className="flex flex-1 xl:x-gap-6">
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:top-0 after:right-0 ">
-                <div className="mb-2 text-2xl font-extrabold xl:text-4xl text-accent">
-                  <CountUp start={0} end={5} duration={5} /> +
+                <div className="mb-2 text-xl font-extrabold xl:text-3xl text-accent">
+                  <CountUp start={0} end={1000} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Years of Experience
+                  Hours of Coding
                 </div>
               </div>
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:top-0 after:right-0 ">
-                <div className="mb-2 text-2xl font-extrabold xl:text-4xl text-accent">
-                  <CountUp start={0} end={15} duration={5} /> +
+                <div className="mb-2 text-xl font-extrabold xl:text-3xl text-accent">
+                  <CountUp start={0} end={20} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                   Finished Projects
                 </div>
               </div>
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:top-0 after:right-0 ">
-                <div className="mb-2 text-2xl font-extrabold xl:text-4xl text-accent">
+                <div className="mb-2 text-xl font-extrabold xl:text-3xl text-accent">
                   <CountUp start={0} end={7} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
@@ -249,7 +284,7 @@ const About = () => {
                 </div>
               </div>
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:top-0 after:right-0 ">
-                <div className="mb-2 text-2xl font-extrabold xl:text-4xl text-accent">
+                <div className="mb-2 text-xl font-extrabold xl:text-3xl text-accent">
                   <CountUp start={0} end={4} duration={5} /> +
                 </div>
                 <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">

@@ -21,38 +21,38 @@ import { FreeMode, Pagination } from "swiper";
 // data
 const serviceData = [
   {
-    icon: <RxCrop />,
-    title: "Branding",
+    icon: <RxRocket />,
+    title: "Data Driven Solutions",
     description:
-      "We help you create a unique identity for your business that sets you apart from the competition.",
+      "I help you analysis and create a solution with the newest Generative AI.",
     link: "/contact?id=branding",
   },
   {
     icon: <RxPencil2 />,
     title: "Design",
     description:
-      "We provide visually stunning designs that capture the essence of your brand and engage your audience.",
+      "I provide visually stunning designs that capture the essence of your brand and engage your audience.",
     link: "/contact?id=design",
   },
   {
     icon: <SiWebpack />,
     title: "Website Development",
     description:
-      "We build robust and scalable digital solutions to help you achieve your business goals.",
+      "I build robust and scalable digital solutions to help you achieve your business goals.",
     link: "/contact?id=website",
   },
   {
     icon: <RxReader />,
     title: "Copywriting",
     description:
-      "We craft compelling copy that effectively communicates your message and drives action.",
+      "I craft compelling copy that effectively communicates your message and drives action.",
     link: "/contact?id=copywriting",
   },
   {
     icon: <RxDesktop />,
     title: "Application Development",
     description:
-      "We optimize your app's UI to enhance user experience and increase engagement.",
+      "I optimize your app's UI to enhance user experience and increase engagement.",
     link: "/contact?id=application",
   },
 ];
