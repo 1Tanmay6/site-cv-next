@@ -11,10 +11,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 
 const Home = () => {
-  const string = `I'm a full-stack web developer and UI/UX designer based in India. I
-  enjoy turning complex problems into simple, beautiful and intuitive
-  designs. When I'm not coding, you'll find me Designing or playing
-  games.`;
+  const string = `I'm a full-stack web developer, data scientist, and UI/UX designer based in India. I excel at transforming complex problems into simple, beautiful, and intuitive solutions. When I'm not coding or analyzing data, you'll find me designing or playing games.`;
   return (
     <div className="h-full bg-primary/60">
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black-30 to-black/10">
