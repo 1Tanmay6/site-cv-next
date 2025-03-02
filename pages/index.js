@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Head from "next/head";
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
@@ -14,6 +14,10 @@ const Home = () => {
   const string = `I'm a full-stack web developer, data scientist, and UI/UX designer based in India. I excel at transforming complex problems into simple, beautiful, and intuitive solutions. When I'm not coding or analyzing data, you'll find me designing or playing games.`;
   return (
     <div className="h-full bg-primary/60">
+      <Head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>Meet Tanmay Patil</title>
+      </Head>
       <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black-30 to-black/10">
         {/* Title */}
         <div className="container flex flex-col justify-center h-full mx-auto text-center xl:pt-40 xl:text-left">
@@ -71,6 +75,5 @@ const Home = () => {
     </div>
   );
 };
-32;
 
 export default Home;
