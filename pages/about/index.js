@@ -241,14 +241,9 @@ const About = () => {
             exit="hidden"
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
           >
-            As a versatile programmer with over 5 years of experience in
-            programming, I have a strong foundation in Python and Java. My
-            passion for web development has led me to create visually appealing
-            and functional websites. I am also a data scientist skilled in
-            leveraging generative AI to create innovative products.
-            Additionally, I specialize in developing mobile applications using
-            Flutter and Dart, delivering seamless user experiences across
-            platforms
+            As a tech enthusiast with 2 internships in data science under my belt, I am now focused on developing agentic solutions that leverage generative AI. With over 5 years of learning and growth, including strong foundations in Python 
+          and Java, I am excited to apply my technical expertise to drive business growth through data-driven approaches and AI-powered innovations.
+
           </motion.p>
           {/* counters */}
           <motion.div
