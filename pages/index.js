@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Head from "next/head";
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
@@ -11,7 +10,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 
 const Home = () => {
-  const string = `I'm a full-stack web developer, data scientist, and UI/UX designer based in India. I excel at transforming complex problems into simple, beautiful, and intuitive solutions. When I'm not coding or analyzing data, you'll find me designing or playing games.`;
+  const string = `I'm a  data scientist, full-stack web developer, and UI/UX designer based in India. I excel at transforming complex problems into simple, beautiful, and intuitive solutions. When I'm not coding or analyzing data, you'll find me designing or playing games.`;
   return (
     <div className="h-full bg-primary/60">
       <Head>
@@ -28,8 +27,8 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Digitally <span className="text-accent">Igniting</span> <br /> Your
-            Vision
+            Fusion of <span className="text-accent">Logic</span> <br />and <span className="text-accent">Innovation</span>
+           
           </motion.h1>
           {/* supporting description*/}
           <motion.p
@@ -67,7 +66,7 @@ const Home = () => {
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="w-full h-full max-w-[678px] max-h-[738px] absolute -bottom-[-225px] lg:right-[10%]"
+          className="w-full h-full max-w-[800px] max-h-[700px] absolute -bottom-[-2px] lg:right-[3%]"
         >
           <Avatar />
         </motion.div>
