@@ -1,0 +1,43 @@
+{
+  "methodology": "Chromium production build, reduced motion, median of PERF_RUNS (default 3) runs per route. LCP is measured from navigation; CLS is measured after the pre-existing page-transition wipe settles.",
+  "generatedAt": "2026-10-31",
+  "tolerance": 0.2,
+  "routes": {
+    "/": {
+      "ttfbMs": 7,
+      "loadMs": 31,
+      "lcpMs": 36,
+      "cls": 0
+    },
+    "/about": {
+      "ttfbMs": 6,
+      "loadMs": 22,
+      "lcpMs": 28,
+      "cls": 0
+    },
+    "/services": {
+      "ttfbMs": 6,
+      "loadMs": 19,
+      "lcpMs": 24,
+      "cls": 0
+    },
+    "/work": {
+      "ttfbMs": 6,
+      "loadMs": 21,
+      "lcpMs": 28,
+      "cls": 0
+    },
+    "/testimonials": {
+      "ttfbMs": 4,
+      "loadMs": 20,
+      "lcpMs": 24,
+      "cls": 0
+    },
+    "/contact": {
+      "ttfbMs": 5,
+      "loadMs": 19,
+      "lcpMs": 24,
+      "cls": 0
+    }
+  }
+}

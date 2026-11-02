@@ -1,0 +1,35 @@
+{
+  "methodology": "Route JS = union of _app chunks and route chunks from .next/build-manifest.json, concatenated then gzipped at level 9.",
+  "generatedAt": "2026-10-31",
+  "tolerance": 0.1,
+  "routes": {
+    "/": {
+      "rawBytes": 654835,
+      "gzipBytes": 206152
+    },
+    "/404": {
+      "rawBytes": 538263,
+      "gzipBytes": 172054
+    },
+    "/about": {
+      "rawBytes": 604814,
+      "gzipBytes": 199547
+    },
+    "/contact": {
+      "rawBytes": 542938,
+      "gzipBytes": 173704
+    },
+    "/services": {
+      "rawBytes": 680202,
+      "gzipBytes": 220239
+    },
+    "/testimonials": {
+      "rawBytes": 538807,
+      "gzipBytes": 172275
+    },
+    "/work": {
+      "rawBytes": 632182,
+      "gzipBytes": 199837
+    }
+  }
+}
