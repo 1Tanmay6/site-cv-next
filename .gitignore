@@ -12,6 +12,13 @@
 /.next/
 /out/
 
+# tests
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.eslintcache
+
 # production
 /build
 
@@ -26,7 +33,9 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
@@ -34,3 +43,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+-l
+local_
+docs

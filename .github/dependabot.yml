@@ -1,0 +1,44 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Asia/Kolkata
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - security
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      production-patch-minor:
+        dependency-type: production
+        update-types:
+          - patch
+          - minor
+      development-patch-minor:
+        dependency-type: development
+        update-types:
+          - patch
+          - minor
+      framework-major:
+        patterns:
+          - next
+          - react
+          - react-dom
+          - eslint-config-next
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - ci
+    commit-message:
+      prefix: "chore(ci)"
