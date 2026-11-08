@@ -33,9 +33,7 @@ module.exports = defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,
     env: {
-      CONTACT_MAIL_TRANSPORT: "json",
-      MAIL_FROM: "portfolio@example.com",
-      MAIL_TO: "owner@example.com",
+      CONTACT_STORE: "json",
       CONTACT_RATE_LIMIT_MAX: "5",
       CONTACT_RATE_LIMIT_WINDOW_MS: "60000",
       CONTACT_GLOBAL_RATE_LIMIT_MAX: "1000",

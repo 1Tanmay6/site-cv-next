@@ -23,7 +23,7 @@
     "test:bundle:update": "node scripts/check-bundle-budget.mjs --update",
     "perf:measure": "node scripts/measure-web-vitals.mjs",
     "perf:measure:update": "node scripts/measure-web-vitals.mjs --update",
-    "mail:test-account": "node scripts/create-test-mailbox.mjs",
+    "contact:check": "node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/check-contact-store.mjs",
     "audit:a11y": "node scripts/a11y-audit.mjs",
     "audit:check": "node scripts/audit-check.mjs",
     "verify": "npm run lint && npm run test && npm run build && npm run test:bundle && npm run audit:check"
@@ -33,7 +33,6 @@
     "@tsparticles/slim": "^4.5.0",
     "framer-motion": "^14.9.0",
     "next": "16.4.3",
-    "nodemailer": "^10.3.1",
     "react": "19.3.1",
     "react-countup": "^6.5.3",
     "react-dom": "19.3.1",

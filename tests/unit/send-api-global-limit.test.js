@@ -1,8 +1,8 @@
 import { Readable } from "node:stream";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-vi.mock("../../lib/mailer", () => ({
-  sendContactMail: vi.fn().mockResolvedValue({ messageId: "test" }),
+vi.mock("../../lib/contact-store", () => ({
+  saveContactRequest: vi.fn().mockResolvedValue({ messageId: "test" }),
 }));
 
 let handler;

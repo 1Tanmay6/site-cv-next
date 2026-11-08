@@ -1,12 +1,12 @@
 import { Readable } from "node:stream";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("../../lib/mailer", () => ({
-  sendContactMail: vi.fn().mockResolvedValue({ messageId: "test" }),
+vi.mock("../../lib/contact-store", () => ({
+  saveContactRequest: vi.fn().mockResolvedValue({ id: "test" }),
 }));
 
 import handler from "../../pages/api/send";
-import { sendContactMail } from "../../lib/mailer";
+import { saveContactRequest } from "../../lib/contact-store";
 
 let ipCounter = 0;
 
@@ -76,7 +76,7 @@ const validPayload = {
 
 describe("POST /api/send", () => {
   beforeEach(() => {
-    sendContactMail.mockResolvedValue({ messageId: "test" });
+    saveContactRequest.mockResolvedValue({ messageId: "test" });
   });
 
   afterEach(() => {
@@ -89,7 +89,7 @@ describe("POST /api/send", () => {
     expect(response.statusCode).toBe(405);
     expect(response.headers.allow).toBe("POST");
     expect(response.body).toEqual({ ok: false, error: "method_not_allowed" });
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects unsupported content types with 415", async () => {
@@ -99,7 +99,7 @@ describe("POST /api/send", () => {
     });
 
     expect(response.statusCode).toBe(415);
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects cross-site origins with 403", async () => {
@@ -109,7 +109,7 @@ describe("POST /api/send", () => {
     });
 
     expect(response.statusCode).toBe(403);
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects requests marked as cross-site by the browser", async () => {
@@ -128,7 +128,7 @@ describe("POST /api/send", () => {
     });
 
     expect(response.statusCode).toBe(200);
-    expect(sendContactMail).toHaveBeenCalledTimes(1);
+    expect(saveContactRequest).toHaveBeenCalledTimes(1);
   });
 
   it("rejects malformed JSON with a generic 400", async () => {
@@ -136,14 +136,14 @@ describe("POST /api/send", () => {
 
     expect(response.statusCode).toBe(400);
     expect(response.body).toEqual({ ok: false, error: "invalid_request" });
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects empty bodies with a generic 400", async () => {
     const { response } = await invoke({ rawBody: "" });
 
     expect(response.statusCode).toBe(400);
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects oversized payloads with 413", async () => {
@@ -156,7 +156,7 @@ describe("POST /api/send", () => {
 
     expect(response.statusCode).toBe(413);
     expect(response.body).toEqual({ ok: false, error: "payload_too_large" });
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("rejects oversized payloads declared through content-length", async () => {
@@ -170,7 +170,10 @@ describe("POST /api/send", () => {
 
   it.each([
     ["unexpected field", { ...validPayload, admin: true }],
-    ["CRLF in subject", { ...validPayload, subject: "Hello\r\nBcc: evil@example.com" }],
+    [
+      "CRLF in subject",
+      { ...validPayload, subject: "Hello\r\nBcc: evil@example.com" },
+    ],
     ["unsafe service id", { ...validPayload, id: "billing" }],
     ["invalid email", { ...validPayload, email: "nope" }],
     ["missing message", { ...validPayload, message: "" }],
@@ -179,7 +182,7 @@ describe("POST /api/send", () => {
 
     expect(response.statusCode).toBe(400);
     expect(response.body).toEqual({ ok: false, error: "invalid_request" });
-    expect(sendContactMail).not.toHaveBeenCalled();
+    expect(saveContactRequest).not.toHaveBeenCalled();
   });
 
   it("sends one normalized mail for a valid request", async () => {
@@ -195,8 +198,8 @@ describe("POST /api/send", () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ ok: true });
-    expect(sendContactMail).toHaveBeenCalledTimes(1);
-    expect(sendContactMail).toHaveBeenCalledWith({
+    expect(saveContactRequest).toHaveBeenCalledTimes(1);
+    expect(saveContactRequest).toHaveBeenCalledWith({
       name: "Ada Lovelace",
       email: "ADA@example.com",
       subject: "Project enquiry",
@@ -206,17 +209,54 @@ describe("POST /api/send", () => {
     expect(errorSpy).not.toHaveBeenCalled();
   });
 
-  it("returns a generic 503 when mail delivery fails without leaking data", async () => {
+  it("returns a generic 503 when the contact store fails without leaking data", async () => {
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    sendContactMail.mockRejectedValueOnce(new Error("SMTP password rejected"));
+    saveContactRequest.mockRejectedValueOnce(
+      Object.assign(new Error("Invalid login"), {
+        code: "EAUTH",
+        command: "AUTH",
+        responseCode: 535,
+      }),
+    );
 
     const { response } = await invoke({ body: validPayload });
 
     expect(response.statusCode).toBe(503);
     expect(response.body).toEqual({ ok: false, error: "unavailable" });
     expect(JSON.stringify(response.body)).not.toContain("SMTP");
-    expect(errorSpy).toHaveBeenCalledWith("[contact] mail delivery failed");
-    const logged = errorSpy.mock.calls.flat().join(" ");
+    expect(errorSpy).toHaveBeenCalledWith(
+      "[contact] store request failed",
+      expect.objectContaining({
+        name: "Error",
+        code: "EAUTH",
+        command: "AUTH",
+        responseCode: 535,
+      }),
+    );
+    const logged = JSON.stringify(errorSpy.mock.calls);
+    expect(logged).not.toContain("ada@example.com");
+    expect(logged).not.toContain("Hello, I would like");
+    expect(logged).not.toContain("password");
+  });
+
+  it("logs configuration errors by variable name only", async () => {
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    saveContactRequest.mockRejectedValueOnce(
+      Object.assign(
+        new Error(
+          "Missing contact store configuration: repo_name, git_pat_token",
+        ),
+        { name: "ContactStoreConfigurationError" },
+      ),
+    );
+
+    const { response } = await invoke({ body: validPayload });
+
+    expect(response.statusCode).toBe(503);
+    expect(errorSpy).toHaveBeenCalledWith(
+      "[contact] store configuration error: Missing contact store configuration: repo_name, git_pat_token",
+    );
+    const logged = JSON.stringify(errorSpy.mock.calls);
     expect(logged).not.toContain("ada@example.com");
     expect(logged).not.toContain("Hello, I would like");
   });
@@ -234,14 +274,14 @@ describe("POST /api/send", () => {
     expect(response.statusCode).toBe(429);
     expect(response.body).toEqual({ ok: false, error: "rate_limited" });
     expect(Number(response.headers["retry-after"])).toBeGreaterThan(0);
-    expect(sendContactMail).toHaveBeenCalledTimes(5);
+    expect(saveContactRequest).toHaveBeenCalledTimes(5);
   });
 
   it("sets no-store caching on every response", async () => {
     const { response } = await invoke({ body: validPayload });
     expect(response.headers["cache-control"]).toBe("no-store");
     expect(response.headers["content-type"]).toBe(
-      "application/json; charset=utf-8"
+      "application/json; charset=utf-8",
     );
   });
 });
