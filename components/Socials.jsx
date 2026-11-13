@@ -5,9 +5,16 @@ import {
   RiLinkedinLine,
   RiFacebookLine,
   RiGithubLine,
+  RiFileTextLine,
 } from "react-icons/ri";
 
 const socialLinks = [
+  {
+    label: "Resume",
+    href: "/Tanmay_Patil_Resume_GenAI.pdf",
+    icon: <RiFileTextLine />,
+    download: true,
+  },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/tanmay-patil-181820177",
@@ -39,6 +46,7 @@ const Socials = () => {
           href={social.href}
           aria-label={social.label}
           rel="noopener noreferrer"
+          download={social.download ? "" : undefined}
           className="transition-all duration-300 hover:text-accent"
         >
           <span aria-hidden="true">{social.icon}</span>

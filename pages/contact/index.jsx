@@ -120,10 +120,21 @@ const Contact = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="mb-12 text-center h2"
+            className="mb-4 text-center h2"
           >
             {lets} <span className="text-accent">Connect.</span>{" "}
           </motion.h2>
+          <motion.p
+            variants={fadeIn("up", 0.15)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="max-w-[560px] mx-auto mb-10 text-center"
+          >
+            Working on finance, supply chain, or document-heavy workflows? Tell
+            me what you want to improve — cost, speed, accuracy, or manual
+            effort — and I will reply with a concrete next step.
+          </motion.p>
           {/* form */}
           <motion.form
             variants={fadeIn("up", 0.2)}

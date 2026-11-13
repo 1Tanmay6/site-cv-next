@@ -5,45 +5,43 @@ import { motion } from "framer-motion";
 // variants
 const transitionVariants = {
   initial: {
-    x: "100%",
-    width: "100%",
+    scaleX: 1,
+    originX: 0,
   },
   animate: {
-    x: "0%",
-    width: "0%",
+    scaleX: 0,
+    originX: 0,
   },
   exit: {
-    x: ["0%", "100%"],
-    width: ["0%", "100%"],
+    scaleX: 1,
+    originX: 0,
   },
 };
+
+const panels = [
+  { className: "bg-[#1b3634] z-[100]", delay: 0 },
+  { className: "bg-[#224442] z-[99]", delay: 0.05 },
+  { className: "bg-[#284e4c] z-[98]", delay: 0.1 },
+];
+
 const Transition = () => {
   return (
     <>
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-[#1b3634]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.23, duration: 0.52, ease: "easeInOut" }}
-      ></motion.div>
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-20 bg-[#224442]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.33, duration: 0.52, ease: "easeInOut" }}
-      ></motion.div>
-      <motion.div
-        className="fixed top-0 bottom-0 right-full w-screen h-screen z-10 bg-[#284e4c]"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: 0.43, duration: 0.52, ease: "easeInOut" }}
-      ></motion.div>
+      {panels.map((panel) => (
+        <motion.div
+          key={panel.className}
+          className={`fixed inset-0 w-screen h-screen origin-left will-change-transform pointer-events-none ${panel.className}`}
+          variants={transitionVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{
+            delay: panel.delay,
+            duration: 0.45,
+            ease: [0.76, 0, 0.24, 1],
+          }}
+        />
+      ))}
     </>
   );
 };

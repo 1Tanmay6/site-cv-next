@@ -10,16 +10,16 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../variants";
 
 const Home = () => {
-  const string = `I'm a  data scientist, full-stack web developer, and UI/UX designer based in India. I excel at transforming complex problems into simple, beautiful, and intuitive solutions. When I'm not coding or analyzing data, you'll find me designing or playing games.`;
+  const string = `I build production LLM and agentic systems at Genpact for finance and supply chain — including ACE (ICLR 2026), a 3-way reconciliation platform, and a demand forecasting agent.`;
   return (
     <div className="h-full bg-primary/60">
       <Head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <title>Meet Tanmay Patil</title>
+        <title>Tanmay Patil — Agentic AI & Production LLM Systems</title>
       </Head>
       <div className="w-full h-full bg-linear-to-r from-primary/10 via-black-30 to-black/10">
         {/* Title */}
-        <div className="container flex flex-col justify-center h-full mx-auto text-center xl:pt-40 xl:text-left">
+        <div className="container flex flex-col justify-start h-full pt-44 mx-auto text-center xl:justify-center xl:pt-40 xl:text-left">
           <motion.h1
             variants={fadeIn("down", 0.1)}
             initial="hidden"
@@ -27,8 +27,8 @@ const Home = () => {
             exit="hidden"
             className="h1"
           >
-            Fusion of <span className="text-accent">Logic</span> <br />
-            and <span className="text-accent">Innovation</span>
+            Agentic AI, <br />
+            Built to <span className="text-accent">Ship</span>
           </motion.h1>
           {/* supporting description*/}
           <motion.p

@@ -22,6 +22,9 @@ describe("normalizeServiceId", () => {
     ["-1", "not-from-service"],
     [" branding ", "branding"],
     ["DESIGN", "design"],
+    ["genai", "genai"],
+    ["datascience", "datascience"],
+    ["synthetic-data", "synthetic-data"],
   ])("normalizes %p to %p", (input, expected) => {
     expect(normalizeServiceId(input)).toEqual({ ok: true, value: expected });
   });

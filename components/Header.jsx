@@ -6,7 +6,7 @@ import Socials from "../components/Socials";
 
 const Header = () => {
   return (
-    <header className="absolute z-30 w-full flex items-center px-16 xl:px-0 xl:h-[90px]">
+    <header className="absolute z-30 w-full flex items-center px-16 xl:px-0 xl:h-[90px] bg-linear-to-b from-primary via-primary/90 to-primary/70 backdrop-blur-sm">
       <div className="container mx-auto ">
         <div className="flex flex-col items-center justify-between py-8 lg:flex-row gap-y-6">
           <Link href="/" aria-label="Tanmay Patil - home">

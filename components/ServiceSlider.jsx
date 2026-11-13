@@ -6,6 +6,8 @@ import {
   RxArrowTopRight,
 } from "react-icons/rx";
 
+import { FaRobot, FaDatabase, FaShieldAlt } from "react-icons/fa";
+
 import { SiWebpack } from "react-icons/si";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,38 +22,59 @@ import { FreeMode, Pagination } from "swiper/modules";
 // data
 const serviceData = [
   {
+    icon: <FaRobot />,
+    title: "GenAI & Agentic Systems",
+    description:
+      "I ship production LLM systems like ACE — RAG, multi-agent orchestration, tool calling, MCP, and evaluation loops that reduce manual effort.",
+    link: "/contact?id=genai",
+  },
+  {
     icon: <RxRocket />,
     title: "Data Driven Solutions",
     description:
-      "I help you analysis and create a solution with the newest Generative AI.",
+      "I turn messy finance and supply-chain data into decision-ready insight, using Generative AI only where it produces a measurable outcome.",
     link: "/contact?id=branding",
+  },
+  {
+    icon: <FaDatabase />,
+    title: "Data Science & Forecasting",
+    description:
+      "I build forecasting and KPI systems like the demand forecasting agent, which cut planner workload ~40% through per-SKU model selection.",
+    link: "/contact?id=datascience",
+  },
+  {
+    icon: <FaShieldAlt />,
+    title: "Synthetic Data & Privacy",
+    description:
+      "I build synthetic data platforms like Data Marketplace, which cut client POC timelines ~40% while preserving privacy and compliance.",
+    link: "/contact?id=synthetic-data",
   },
   {
     icon: <RxPencil2 />,
     title: "Design",
     description:
-      "I provide visually stunning designs that capture the essence of your brand and engage your audience.",
+      "I design clear interfaces for complex data products, so operators can act on exceptions instead of raw tables.",
     link: "/contact?id=design",
   },
   {
     icon: <SiWebpack />,
     title: "Website Development",
     description:
-      "I build robust and scalable digital solutions to help you achieve your business goals.",
+      "I build fast, accessible web products, including this portfolio and client-facing dashboards.",
     link: "/contact?id=website",
   },
   {
     icon: <RxReader />,
     title: "Copywriting",
     description:
-      "I craft compelling copy that effectively communicates your message and drives action.",
+      "I write clear, conversion-focused copy for technical products and data platforms.",
     link: "/contact?id=copywriting",
   },
   {
     icon: <RxDesktop />,
     title: "Application Development",
     description:
-      "I optimize your app's UI to enhance user experience and increase engagement.",
+      "I build cross-platform apps that improve engagement and reduce time-to-value.",
     link: "/contact?id=application",
   },
 ];

@@ -1,6 +1,6 @@
 const ROUTES = [
-  { path: "/", heading: /Fusion of/i },
-  { path: "/about", heading: /Insightful Analysis/i },
+  { path: "/", heading: /Agentic AI/i },
+  { path: "/about", heading: /From Research/i },
   { path: "/services", heading: /My Services/i },
   { path: "/work", heading: /My Work/i },
   { path: "/testimonials", heading: /What Clients Say/i },

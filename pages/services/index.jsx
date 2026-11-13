@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 const Services = () => {
   return (
-    <div className="flex items-center h-full bg-primary/30 py-36">
+    <div className="h-full overflow-y-auto bg-primary/30 pt-44 pb-36 xl:flex xl:items-center xl:py-36">
       <PageTitle
         title="Services | Tanmay Patil"
-        description="Data analysis, web development, and cross-platform application services."
+        description="GenAI, data science, and synthetic data services for finance and supply chain teams."
       />
       <Circles />
       <div className="container mx-auto">
@@ -33,11 +33,11 @@ const Services = () => {
               exit="hidden"
               className="mb-4 max-w-[400px] mx-auto lg:mx-0"
             >
-              As a skilled data scientist, full stack developer, and app
-              developer specializing in Flutter and Dart, I offer comprehensive
-              services including data analysis, end-to-end web development, and
-              cross-platform mobile app creation. Lets turn your ideas into
-              reality with tailored, high-quality solutions.
+              I build production GenAI and data science systems for finance and
+              supply chain. Recent work includes ACE (ICLR 2026, ~80% lower
+              adaptation cost), a 3-way reconciliation platform (~90%
+              automated), and a demand forecasting agent (~40% lower planner
+              workload).
             </motion.p>
           </div>
           {/* Slider */}
