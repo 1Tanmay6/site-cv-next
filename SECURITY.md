@@ -9,13 +9,27 @@ include real credentials, visitor messages, or personal data in reports.
 
 ## Secrets policy
 
-- Never commit SMTP credentials, tokens, or `.env*` files other than
-  `.env.example`.
+- Never commit SMTP credentials, provider API keys, tokens, or `.env*` files
+  other than `.env.example`.
 - `.env`, `.env.local`, and other environment files are ignored by Git.
 - Secrets belong in deployment-managed environment variables and must be
   rotated immediately if exposure is suspected.
 - Client bundles must never receive server-only values. Mail configuration is
-  read only inside `pages/api/send.js` and `lib/mailer.js`.
+  read only inside `pages/api/send.js` and `lib/contact-store.js`.
+
+## Contact storage
+
+Every valid contact request is stored as a new `.txt` file in a GitHub
+repository. No mailbox password or provider API key is used.
+
+- `repo_name` must be `owner/repository`; use a **private repository** because
+  the files contain visitor names, email addresses, subjects, and messages.
+- `git_pat_token` should be a fine-grained PAT with only **Contents: Read and
+  write** on that repository, with an expiry. Mark it Sensitive in Vercel.
+- The API logs only safe fields such as provider, error code, command, and
+  response code. It never logs the PAT, visitor addresses, or message content.
+- Define a retention/deletion process for contact files and repository history.
+- Rotate the PAT on operator changes or suspected exposure.
 
 ### Known incident requiring maintainer action
 

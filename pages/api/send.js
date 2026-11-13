@@ -1,6 +1,6 @@
 import { validateContactPayload } from "../../lib/contact-schema";
 import { createRateLimiter, getClientIp } from "../../lib/rate-limit";
-import { sendContactMail } from "../../lib/mailer";
+import { saveContactRequest } from "../../lib/contact-store";
 
 // The handler owns body parsing so malformed JSON and oversized payloads fail
 // closed with generic responses instead of framework error pages.
@@ -227,10 +227,21 @@ export default async function handler(request, response) {
   }
 
   try {
-    await sendContactMail(validation.value);
-  } catch {
-    // Deliberately no error details, addresses, or message content in logs.
-    console.error("[contact] mail delivery failed");
+    await saveContactRequest(validation.value);
+  } catch (error) {
+    // Deliberately no message content, addresses, or credentials in logs.
+    // Configuration errors only contain environment variable names.
+    if (error?.name === "ContactStoreConfigurationError") {
+      console.error(`[contact] store configuration error: ${error.message}`);
+    } else {
+      console.error("[contact] store request failed", {
+        name: error?.name,
+        provider: error?.provider,
+        code: error?.code,
+        command: error?.command,
+        responseCode: error?.responseCode,
+      });
+    }
     sendJson(response, 503, { ok: false, error: "unavailable" });
     return;
   }
